@@ -1,0 +1,62 @@
+version: '3.7'
+services:
+  app:
+    environment:
+      - COMPOSER_MEMORY_LIMIT=-1
+    build:
+      args:
+        user: mailer
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: mailer-app
+    container_name: mailer-app
+    restart: unless-stopped
+    working_dir: /var/www/mailer
+    volumes:
+      - ./:/var/www
+    networks:
+      - mailerNetwork
+  db:
+    image: mysql:5.7
+    container_name: mailer-db
+    tty: true
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - '3386:3306'
+    environment:
+      MYSQL_DATABASE: mailer
+      MYSQL_ROOT_PASSWORD: mailer
+      MYSQL_PASSWORD: mailer
+      MYSQL_USER: mailer
+      SERVICE_TAGS: prod
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+
+    networks:
+      - mailerNetwork
+
+  nginx:
+    image: nginx:alpine
+    container_name: mailer-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - mailerNetwork
+  redis:
+    image: redis
+    container_name: mailer-redis
+    volumes:
+      - ./docker-volumes-data/redis:/data
+    networks:
+      - mailerNetwork
+
+networks:
+  mailerNetwork:
+    driver: bridge

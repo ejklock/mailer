@@ -1,0 +1,10 @@
+mailer/node_modules
+mailer/public/storage
+mailer/storage/*.key
+mailer/vendor
+mailer/.env
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log

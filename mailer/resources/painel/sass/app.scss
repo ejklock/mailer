@@ -1,0 +1,126 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+@import "./vendor/taginput.css";
+@import "./vendor/jquery-ui.css";
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+@import "../vendor/sb-admin/sb-admin.min.css";
+
+$fa-font-path: "webfonts/" !default;
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
+@import "~datatables.net-select-bs4/css/select.bootstrap4.css";
+@import "~datatables.net-responsive-bs4/css/responsive.bootstrap4";
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-rendering: optimizelegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+.navbar-laravel {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.custom-file-input ~ .custom-file-label::after {
+    content: "Abrir";
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: #00a875;
+}
+
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.twitter-typeahead {
+    display: inline !important;
+}
+.twitter-typeahead {
+    width: 97%;
+}
+.tt-dropdown-menu {
+    width: 102%;
+}
+input.typeahead.tt-query {
+    /* This is optional */
+    width: 300px !important;
+}
+
+#emails.form-control {
+    height: calc(1.6em + 1.5rem + 2px);
+}
+
+#emails.sr-only {
+    display: none;
+}
+.ui-autocomplete {
+    position: absolute;
+    z-index: 99999 !important;
+    cursor: default;
+    padding: 0;
+    margin-top: 2px;
+    list-style: none;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ui-autocomplete > li {
+    padding: 3px 20px;
+}
+
+.ui-autocomplete > li.ui-state-focus {
+    background-color: #ddd;
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+#spinner:not([hidden]) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+#spinner::after {
+    content: "";
+    width: 80px;
+    height: 80px;
+    border: 2px solid #f3f3f3;
+    border-top: 3px solid #f25a41;
+    border-radius: 100%;
+    will-change: transform;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
